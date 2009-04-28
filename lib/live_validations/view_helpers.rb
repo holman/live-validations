@@ -31,7 +31,7 @@ module LiveValidations
         adapter_instance.perform_validations
         
         silence_warnings do
-          concat(%{<script type="text/javascript">#{adapter_instance.render_inline_javascript}</script>}, block.binding) if adapter_instance.utilizes_inline_javascript?
+          concat(%{<script type="text/javascript">#{adapter_instance.render_inline_javascript}</script>}) if adapter_instance.utilizes_inline_javascript?
         end
       else
         form_for_without_live_validations(record_name_or_array, *(args << options), &block)
